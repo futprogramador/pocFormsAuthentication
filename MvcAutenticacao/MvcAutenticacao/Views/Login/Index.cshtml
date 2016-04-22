@@ -1,0 +1,49 @@
+﻿@model MvcAutenticacao.Models.UsuarioModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Autenticação</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">                
+            </div>
+            <div class="col-lg-4">
+                <div class="alert-warning">
+                    @Html.ValidationMessage(String.Empty)
+                </div>
+
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { id = "formUsuario", @class = "form -signin"}))
+                {
+                    <h2 class="form-signin-heading">Login</h2>
+
+                    @Html.LabelFor(x => x.Usuario, new { @class = "sr-only" })
+                    @Html.TextBoxFor(x => x.Usuario, new { @class = "form-control", placeholder = "Usuario", required = "", autofocus = "" })
+
+
+                    @Html.LabelFor(x => x.Senha, new { @class = "sr-only" })
+                    @Html.PasswordFor(x => x.Senha, new { @class = "form-control", placeholder = "Senha", required = "", autofocus = "" })
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                }
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
